@@ -39,4 +39,36 @@ Here are some tips I found online before we proceed on other interview questions
 
 * Demonstrate your interest in finance, and specifically Goldman. Everyone has an answer for why Goldman other than the fact they are the best. They know they are the best, tell them something you value about the firm that you have noticed through talking with people, observing the firm, and researching online.
 
+Here are some popular leetcode problems to consider and try solving before the super day
+
+* [minimum-size-subarray-sum](https://leetcode.com/problems/minimum-size-subarray-sum/)
+
+* [hashmap-design](https://leetcode.com/problems/design-hashmap/)
+
+* [alient-dictionary-verifyer](https://leetcode.com/problems/verifying-an-alien-dictionary/)
+
+* [lru-cache](https://leetcode.com/problems/lru-cache/)
+
+* [decode-ways](https://leetcode.com/problems/decode-ways/)
+
+* Given an array it should contain 0 to N-1 values such as arr[i] = i, if value is not present in given array then arr[i] = -1;
+eg: {-1,-1,5,6,4,-1,2} -> {-1, -1, 2, -1, 4, 5, 6}
+
+* Input contains List, String -> possibleAnagram {"to", "toe", "toes"}, "eot" -> return true question was updated for this case: {"to", "toe", "toes"}, "eot*" -> true as * is replaced by anyCharacter
+
+* List of possible currency conversions from one to another, find whether there is a cycle.
+        USD —> EUR
+        USD —> JPY
+        USD —> GBY
+        EUR —> CNY
+        EUR —> JPY
+        JPY —> KRY
+        JPY —> GBY
+        GBY —> KRY
+        KRY —> BTC
+        BTC —> ETH
+        ETH —> USD
+	return: USD —> JPY —> KRY —> BTC —> ETH —> USD (or)
+	USD —> GBY —> KRY —> BTC —> ETH —> USD
+
 
