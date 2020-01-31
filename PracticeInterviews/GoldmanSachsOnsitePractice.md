@@ -57,6 +57,7 @@ eg: {-1,-1,5,6,4,-1,2} -> {-1, -1, 2, -1, 4, 5, 6}
 * Input contains List, String -> possibleAnagram {"to", "toe", "toes"}, "eot" -> return true question was updated for this case: {"to", "toe", "toes"}, "eot*" -> true as * is replaced by anyCharacter
 
 * List of possible currency conversions from one to another, find whether there is a cycle.
+
 USD —> EUR <br>
 USD —> JPY <br>
 USD —> GBY <br>
