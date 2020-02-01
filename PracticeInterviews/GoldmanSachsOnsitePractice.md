@@ -69,7 +69,8 @@ GBY —> KRY <br>
 KRY —> BTC <br>
 BTC —> ETH <br>
 ETH —> USD <br>
-	return: USD —> JPY —> KRY —> BTC —> ETH —> USD (or)
+
+	return: USD —> JPY —> KRY —> BTC —> ETH —> USD (or) <br>
 	USD —> GBY —> KRY —> BTC —> ETH —> USD
 
 
