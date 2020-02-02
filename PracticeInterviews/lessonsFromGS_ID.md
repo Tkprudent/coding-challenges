@@ -1,0 +1,1 @@
+This is a document where I share what I learnt from watching the GS investor day. It is the first ever since the company was founded 150 years ago. I believe it would help me understand better the direction of the company should I be favored by God to join the company.
