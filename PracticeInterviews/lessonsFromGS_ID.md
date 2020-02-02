@@ -28,3 +28,33 @@ GS Evolution
 
 
 One GS- reinforce a deep client orientation, simplifying client engagement.
+
+An era of transformation and Opportunity
+
+* Digitization
+* Consumerization
+* Global Complexity
+* Corporate Stewardship
+
+A New Operating Approach
+* Client Centric Organizational Structure
+* Longer Term Operating Focus
+* Investing for Growth
+* Enhanced Accountability
+
+4 Areas of Focus
+* Transaction Banking
+* Third Party Alternatives
+* Digital Consumer Bank
+* Wealth Management, recent acquisition of United Capital
+
+Executing our strategy by John Waldron, President & COO
+
+* Execution in the core franchise
+* Investing for growth
+* Operational Efficiency
+
+Break down divisional silos and motivate better collaboration among the firms.
+
+Finacial Roadmap by Stephen Scherr, CFO
+
