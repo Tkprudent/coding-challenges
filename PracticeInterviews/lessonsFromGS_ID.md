@@ -2,6 +2,12 @@ This is a document where I share what I learnt from watching the GS investor day
 
 There was also technology showcases that are organized by client-type for technologies that serve corporates,institutions and consumers. it helps to learn about the culture and history of innovation at Goldman Sachs.
 
-Strategic Roadmap and Goals:
+Strategic Roadmap and Goals by David Solomon, Chairman & CEO
+
+This is to speak about the path forward, the goal is to clearly communicate strategic directions, and ways to drive greater shareholder value. 
+
+What does GS stands for? What is the purpose of GS in the world? What makes Goldman Sachs special? 
+
+"Our purpose is to "
 
 * 
