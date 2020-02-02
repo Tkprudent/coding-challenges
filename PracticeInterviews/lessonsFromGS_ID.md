@@ -10,4 +10,9 @@ What does GS stands for? What is the purpose of GS in the world? What makes Gold
 
 "Our purpose is to advance sustenable economic growth and financial opportunity, We are proud advocates for capitalism and understand the extraordinary benefit that economic growth brings to all of us."
 
-* 
+4 core values of GS
+* Partnership:: Ethos- Sense of ownership and stewardship driving collaboration, team work, inclusivity and putting client first.
+* Client service
+Exceptional long-term dedication to serving client needs: "Highly productive from a transactional perspective but deep client relationship"
+* Integrity: An unreleting commitment to do the right thing
+* Excellence: Striving to meet client expectations by going the extra mile
