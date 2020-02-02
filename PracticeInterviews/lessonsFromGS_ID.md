@@ -16,3 +16,15 @@ What does GS stands for? What is the purpose of GS in the world? What makes Gold
 Exceptional long-term dedication to serving client needs: "Highly productive from a transactional perspective but deep client relationship"
 * Integrity: An unreleting commitment to do the right thing
 * Excellence: Striving to meet client expectations by going the extra mile
+
+GS is known for quality, depth in the relationship with clients, institutions. We are focused on innovative, fresh and creative ideas. GS is an aspirational brands across the globe. GS has an attention to risk management which forms one of the most important and distinctive advantages. Risk management involves not just the protection of our capital but our reputation as well. We leverage deep analytics, strong processes and a culture of honesty and direct communication. This is a place that always seeks to improve.
+
+GS Evolution
+
+* Transparency: This is to drive more accountability and improve visibility.
+* Open: Accessible both internally and externally.
+* Dynamic: Striving for progress not perfection and being committed to excellence, being more flexible, experiment more.
+* Thinking long term: Investment requires patience and fortitude.
+
+
+One GS- reinforce a deep client orientation, simplifying client engagement.
