@@ -8,6 +8,6 @@ This is to speak about the path forward, the goal is to clearly communicate stra
 
 What does GS stands for? What is the purpose of GS in the world? What makes Goldman Sachs special? 
 
-"Our purpose is to "
+"Our purpose is to advance sustenable economic growth and financial opportunity, We are proud advocates for capitalism and understand the extraordinary benefit that "
 
 * 
