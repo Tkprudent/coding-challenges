@@ -2,6 +2,8 @@ I have taken some time to surf the web, to get preparatory materials for my onsi
 
 Congratulations, you have received the invite for your GS Superday, the long awaited on-site interview is finally here and you are trying to get practice materials to get prepped up for the on-site interview. Here are some of the experiences of some previous candidates.
 
+Prepare to answer [why Goldman Sachs](https://www.10xebitda.com/why-goldman-sachs-investment-banking-interview-answer/)
+
 The interviews are heavily resume dependent. They'll ask you questions on it. For some reason, my interviewer was some Senior Tech recruiter;
  * Why CNNs (Convolutional Neural Networks) are better than simple perceptron 
 
