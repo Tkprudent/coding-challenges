@@ -58,3 +58,13 @@ Break down divisional silos and motivate better collaboration among the firms.
 
 Finacial Roadmap by Stephen Scherr, CFO
 
+* Delivery of financial target
+* A more diversified revenue-based with higher quality earnings.
+* Continue to manage our expense base to create leverage for growth
+* Prudent management of risk
+* Be held accountable to this targets and exceed them. Creating long term shareholder value.
+
+Investment Banking
+
+GS is the number 1 investment banking firm in the world. Consistent and long lasting investment in people, client relationship.
+
