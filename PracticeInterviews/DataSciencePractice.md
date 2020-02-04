@@ -27,3 +27,9 @@ We have 2 main types of predictive models, the regression models that have conti
 2. F1 Score: If we are trying to get the best precision and recall at the same time, we use F1-Score, this is the harmonic mean of precision and recall values for a classification problem.
 
 <img src = "https://i.stack.imgur.com/U0hjG.png">
+
+We may be wondering why Harmonic mean and not Arithmetic mean,this is because HM punishes extreme values more.
+
+Fbeta measures the effectiveness of a model with respect to a user who attaches β times as much importance to recall as precision.
+
+3. Gain and Lift charts
