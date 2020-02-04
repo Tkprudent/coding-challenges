@@ -89,3 +89,7 @@ I was also asked some SQL type question, revise group by, having, where and othe
 The second interview started with a chat on my resume, after which I was asked some scenario based questions from my resume.
 
 I was also asked some behavioural questions and then finally asked a coding problem.
+
+General Advice.
+
+Don't work yourself out and be afraid, stay calm and positive even when you missed the question. Try to communicate effectively to your interviewer about your  thoughts. Don't freak out even when the question seem hard just try your best to explain what you know and you would be fine.
