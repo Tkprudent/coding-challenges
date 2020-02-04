@@ -32,4 +32,26 @@ We may be wondering why Harmonic mean and not Arithmetic mean,this is because HM
 
 Fbeta measures the effectiveness of a model with respect to a user who attaches β times as much importance to recall as precision.
 
-3. Gain and Lift charts
+3. Gain and Lift charts: These are mainly to check the rank ordering of the probabilities. Below are the steps to build a Lift/Gain chart
+
+Step 1: Calculate probability for each observation.
+
+Step 2: Rank these probabilities in decreasing order 
+
+Step 3: Build deciles with each group having almost 10% of the observations.
+
+Step 4: Calculate the response rate at each decile for good (responsers), bad(non-responders), and total.
+
+The graph tells you how well is your model segregating responders from non-responders
+
+4. Area under the ROC - [Receiver Operating Characteristic curve] (AUC -ROC)
+
+This is one of the popular metrics used in the industry. The biggest advantage of using ROC curve is that it is independent of the of the change in proportion of responders.
+
+Points to Remember:
+
+1. For a model which gives class as output, will be represented as a single point in ROC plot.
+
+2. Such models cannot be compared with each other as the judgement needs to be taken on a single metric and not using multiple metrics. For instance, model with parameters (0.2,0.8) and model with parameter (0.8,0.2) can be coming out of the same model, hence these metrics should not be directly compared.
+
+3. In case of probabilistic model, we were fortunate enough to get a single number which was AUC-ROC. But still, we need to look at the entire curve to make conclusive decisions. It is also possible that one model performs better in some region and other performs better in other.
