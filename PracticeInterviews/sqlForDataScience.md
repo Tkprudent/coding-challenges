@@ -13,3 +13,7 @@ __WHY BUSINESSES LIKE DATABASES__
 * Data integrity is ensured.
 * Data can be accessed quickly.
 * Data is easily shared.
+
+1. CREATE TABLE is a statement that creates a new table in a database.
+2. DROP TABLE is a statement that removes a table in a database.
+3. SELECT allows you to read data and display it. This is called a query.
