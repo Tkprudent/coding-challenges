@@ -6,3 +6,7 @@ I have decided to focus extensively on being a very sound data scientist. To ach
 
 * [The Big List of Data Science Interview Prep](https://www.conordewey.com/blog/the-big-list-of-data-science-interview-resources/)
 
+* [Google Data Science Interview Brain Teaser](https://towardsdatascience.com/googles-data-science-interview-brain-teasers-7f3c1dc4ea7f)
+
+* [Common SQL Data Science Questions](https://towardsdatascience.com/5-common-sql-interview-problems-for-data-scientists-1bfa02d8bae6)
+
