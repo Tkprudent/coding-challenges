@@ -10,3 +10,7 @@ I have decided to focus extensively on being a very sound data scientist. To ach
 
 * [Common SQL Data Science Questions](https://towardsdatascience.com/5-common-sql-interview-problems-for-data-scientists-1bfa02d8bae6)
 
+* [SQL Tutorial by Mode](https://mode.com/sql-tutorial/introduction-to-sql/)
+
+* [Udacity SQL for Data Analysis Course](https://www.udacity.com/course/sql-for-data-analysis--ud198)
+
