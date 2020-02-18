@@ -23,3 +23,5 @@ I have decided to focus extensively on being a very sound data scientist. To ach
 * [Acing your interview](https://career-resource-center.udacity.com/interviews/acing-your-interview)
 
 * [Questions to ask an interviewer](https://jvns.ca/blog/2013/12/30/questions-im-asking-in-interviews/)
+
+* [Data Science Interview Questions 2 ](https://blog.udacity.com/2015/04/data-science-interview-questions.html)
