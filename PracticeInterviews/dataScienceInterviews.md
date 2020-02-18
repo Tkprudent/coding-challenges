@@ -28,3 +28,5 @@ I have decided to focus extensively on being a very sound data scientist. To ach
 
 * [Acing phone interviews](https://www.palantir.com/2012/09/how-to-rock-a-phone-interview/)
 
+* [Machine Learning Interview Questions](https://elitedatascience.com/machine-learning-interview-questions-answers)
+
