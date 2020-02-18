@@ -21,3 +21,5 @@ I have decided to focus extensively on being a very sound data scientist. To ach
 * [Machine Learning Engineer Interview Prep](https://www.udacity.com/course/machine-learning-interview-prep--ud1001)
 
 * [Acing your interview](https://career-resource-center.udacity.com/interviews/acing-your-interview)
+
+* [Questions to ask an interviewer](https://jvns.ca/blog/2013/12/30/questions-im-asking-in-interviews/)
