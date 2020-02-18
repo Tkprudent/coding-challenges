@@ -30,3 +30,15 @@ I have decided to focus extensively on being a very sound data scientist. To ach
 
 * [Machine Learning Interview Questions](https://elitedatascience.com/machine-learning-interview-questions-answers)
 
+* [Top 50 Machine Learning Q&A](https://career.guru99.com/top-50-interview-questions-on-machine-learning/)
+
+* [Machine Learning Interview Q&A2](https://www.mygreatlearning.com/blog/machine-learning-interview-questions/)
+
+* [Simplilearn Machine Learning Q&A](https://www.simplilearn.com/machine-learning-interview-questions-and-answers-article)
+
+* [Machine Learning FAQs](https://www.ubuntupit.com/frequently-asked-machine-learning-interview-questions-and-answers/)
+
+* [41 Essential ML Q&A](https://www.springboard.com/blog/machine-learning-interview-questions/)
+
+* [ML Interview by Whizlabs](https://www.whizlabs.com/blog/top-machine-learning-interview-questions/)
+
