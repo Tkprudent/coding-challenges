@@ -42,3 +42,13 @@ I have decided to focus extensively on being a very sound data scientist. To ach
 
 * [ML Interview by Whizlabs](https://www.whizlabs.com/blog/top-machine-learning-interview-questions/)
 
+* [JavaPoint Machine Learning Q&As](https://www.javatpoint.com/machine-learning-interview-questions)
+
+* [Edureka Machine Learning Interview Questions](https://www.edureka.co/blog/interview-questions/machine-learning-interview-questions/)
+
+* [Machine Learning Scenario Based Questions](https://www.edureka.co/blog/interview-questions/machine-learning-interview-questions/#Machine%20Learning%20Scenario%20based%20Interview%20Question)
+
+* [Top 65 SQL Interview Questions to prepare in 2020](https://www.edureka.co/blog/interview-questions/sql-interview-questions)
+
+* [Intellipart Top SQL Questions](https://intellipaat.com/blog/interview-question/sql-server-interview-questions/)
+
