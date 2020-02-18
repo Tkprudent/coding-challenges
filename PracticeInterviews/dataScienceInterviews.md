@@ -4,3 +4,5 @@ I have decided to focus extensively on being a very sound data scientist. To ach
 
 * [Data Science Interview Questions by Springboard](https://www.springboard.com/blog/data-science-interview-questions/)
 
+* [The Big List of Data Science Interview Prep](https://www.conordewey.com/blog/the-big-list-of-data-science-interview-resources/)
+
