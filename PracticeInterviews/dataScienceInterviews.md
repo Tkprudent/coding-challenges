@@ -14,3 +14,8 @@ I have decided to focus extensively on being a very sound data scientist. To ach
 
 * [Udacity SQL for Data Analysis Course](https://www.udacity.com/course/sql-for-data-analysis--ud198)
 
+* [SQL Server Tutorial](https://www.sqlservertutorial.net/)
+
+* [Introduction to Machine Learning](https://www.udacity.com/course/intro-to-machine-learning--ud120)
+
+* [Machine Learning Engineer Interview Prep](https://www.udacity.com/course/machine-learning-interview-prep--ud1001)
