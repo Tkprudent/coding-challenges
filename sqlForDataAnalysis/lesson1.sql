@@ -46,3 +46,12 @@ GROUP BY a.id, a.name, w.channel
 ORDER BY use_of_channel DESC
 LIMIT 10;
 
+/*Which account used facebook most as a channel?*/
+SELECT a.id, a.name, w.channel, COUNT(*) use_of_channel
+FROM accounts as a
+JOIN web_events as w
+ON a.id = w.account_id
+WHERE w.channel = 'facebook'
+GROUP BY a.id, a.name, w.channel
+ORDER BY use_of_channel DESC
+LIMIT 1;
