@@ -1,0 +1,1 @@
+I had a 45 minutes phone screen with Visa for Data Scientist position and I was asked some SQL, Python, and Business case problem to solve;
