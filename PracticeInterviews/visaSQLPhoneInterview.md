@@ -11,3 +11,5 @@ Tell me the strategies you can use to find the top wallet, i.e the most used car
 Query the top 3 merchants in the table named visaTable.
 
 Query the top 3 merchants in each category.
+
+What is the difference between deep and shallow copy.
