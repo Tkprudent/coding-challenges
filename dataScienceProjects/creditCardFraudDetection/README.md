@@ -1,1 +1,1 @@
-This is a documentation of machine learning projects done by Kazeem Tijani
+This is a documentation of machine learning projects done by Kazeem Tijani.
