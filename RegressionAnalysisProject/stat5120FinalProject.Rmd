@@ -1,0 +1,347 @@
+---
+title: 'House prices in Iowa: Application of Regression Analysis Techniques'
+author: "Kazeem Tijani & Jake Miranda"
+output:
+  pdf_document:
+    toc: TRUE
+    toc_depth: '3'
+    highlight : 'zenburn'
+  html_document:
+    number_sections: yes
+    toc: yes
+    toc_depth: 3
+  word_document:
+    toc: yes
+    toc_depth: '3'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+#Introduction
+
+This project is for STAT 5120- Regression Analysis, We seek to apply all the knowledge acquired in the class to perform exploratory data analysis, data visualization and predictive modelling on the Iowa Housing Data.The dataset used can be found on Kaggle by clicking  [here](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
+
+We decided to work on this project to unravel the application of regression analysis techniques to building a real life predictive model that we can use to make decision on possible amount to sell houses which we feel can be a product developed to help realtors while we serve as business consultant or possibly develop a software that can be use the disrupt the real estate market.
+
+Ask a home buyer to describe their dream house, and they probably won't begin with the height of the basement ceiling or the proximity to an east-west railroad. But this playground competition's dataset proves that much more influences price negotiations than the number of bedrooms or a white-picket fence. The dataset we used is very rich, comprising 79 explanatory variables describing almost every aspect of residential apartments in Ames, Iowa.
+
+We seek to build our model on the training set and then predict the final price of each home on our test set.
+
+With 79 explanatory variables describing (almost) every aspect of residential homes in Ames, Iowa, this competition challenges you to predict the final price of each home.
+
+
+<center><img src="https://www.7thheavenproperties.com/wp-content/uploads/2016/09/1-1152x600.jpg"></center>
+
+
+Loading R packages used besides base R.
+
+```{r, message=FALSE, warning=FALSE}
+library(knitr)
+library(ggplot2)
+library(plyr)
+library(dplyr)
+library(corrplot)
+library(caret)
+library(gridExtra)
+library(scales)
+library(Rmisc)
+library(ggrepel)
+```
+
+Here, we import the training and test datasets into R.
+
+```{r}
+training_set <- read.csv("C:/Users/HP Laptop/Desktop/stat5120project/train.csv", na.strings = "NA", header = TRUE)
+test_set <- read.csv("C:/Users/HP Laptop/Desktop/stat5120project/test.csv", na.strings = "NA", header = TRUE)
+```
+
+##Data size and structure
+
+The train dataset consist of character and integer variables. Most of the character variables are actually (ordinal) factors, but I chose to read them into R as character strings as most of them require cleaning and/or feature engineering first. In total, there are 81 columns/variables, of which the last one is the response variable (SalePrice). Below, I am displaying only a glimpse of the variables. All of them are discussed in more detail throughout the document.
+
+```{r}
+dim(training_set)
+str(training_set[,c(1:10, 81)]) #display first 10 variables and the response variable
+```
+
+```{r}
+#Getting rid of the IDs but keeping the test IDs in a vector. These are needed to compose the submission file
+test_labels <- test_set$Id
+test_set$Id <- NULL
+training_set$Id <- NULL
+```
+
+```{r}
+test_set$SalePrice <- NA
+all <- rbind(training_set, test_set)
+dim(all)
+```
+
+Without the Id's, the dataframe consists of 79 predictors and our response variable SalePrice.
+
+
+We would like to observe the SalePrice, and check the shape as the basic exploratory data analysis,
+As you can see, the sale prices are right skewed. This was expected as few people can afford very expensive houses. I will keep this in mind, and take measures before modeling.
+
+```{r, message=FALSE}
+# Let's observe our response variable in this case which is the SalePrice
+options(scipen = 1000)
+ggplot(training_set, aes(training_set$SalePrice, fill = ..count..))+geom_histogram(binwidth = 5000)
+
+```
+
+```{r}
+
+# Let's try to make the plot more normally distributed by using the log
+training_set$log_SalePrice <- log(training_set$SalePrice)
+ggplot(training_set, aes(training_set$log_SalePrice, fill = ..count..))+geom_histogram()
+```
+
+
+##The most important numeric predictors
+
+The character variables need some work before I can use them. To get a feel for the dataset, I decided to first see which numeric variables have a high correlation with the SalePrice.
+
+###Correlations with SalePrice
+
+Altogether, there are 10 numeric variables with a correlation of at least 0.5 with SalePrice. All those correlations are positive.
+
+```{r}
+numericVars <- which(sapply(training_set, is.numeric)) #index vector numeric variables
+numericVarNames <- names(numericVars) #saving names vector for use later on
+cat('There are', length(numericVars), 'numeric variables')
+
+all_numVar <- training_set[, numericVars]
+cor_numVar <- cor(all_numVar, use="pairwise.complete.obs") #correlations of all numeric variables
+
+#sort on decreasing correlations with SalePrice
+cor_sorted <- as.matrix(sort(cor_numVar[,'SalePrice'], decreasing = TRUE))
+ #select only high corelations
+CorHigh <- names(which(apply(cor_sorted, 1, function(x) abs(x)>0.5)))
+cor_numVar <- cor_numVar[CorHigh, CorHigh]
+
+corrplot.mixed(cor_numVar, tl.col="black", tl.pos = "lt")
+```
+
+We decided to select variables that appear interesting to us, instead of using all the variables
+
+```{r}
+# Selecting the important variables
+importantVar<- c('MSZoning', 'LotArea', 'Utilities', 'Neighborhood', 'BldgType',
+               'HouseStyle', 'OverallQual','OverallCond', 'YearBuilt', 'ExterQual',
+               'HeatingQC', 'CentralAir', 'GrLivArea', 'FullBath', 'TotRmsAbvGrd',
+               'KitchenQual', 'GarageCars',
+               'GarageArea','OpenPorchSF','PoolArea','SalePrice')
+newTrainingSet <- training_set[,importantVar]
+head(newTrainingSet)
+
+```
+
+# label encoding, and factorizing variables
+
+### First, we would like to classify the data and then convert some of the factors to numeric variable
+
+```{r}
+# Getting the classification of the data
+numericVars <- which(sapply(newTrainingSet, is.numeric)) #index vector numeric variables
+factorVars <- which(sapply(newTrainingSet, is.factor))
+
+# Converting Factors to Numeric
+newTrainingSet$ExterQual <- as.numeric(factor(newTrainingSet$ExterQual, levels = c("Ex","Gd","TA","Fa","Po"),labels = c(5,4,3,2,1), ordered = T))
+newTrainingSet$HeatingQC <- as.numeric(factor(newTrainingSet$HeatingQC, levels = c("Ex","Gd","TA","Fa","Po"),labels = c(5,4,3,2,1), ordered = T))
+newTrainingSet$CentralAir <- as.numeric(factor(newTrainingSet$CentralAir, levels = c("N","Y"),labels = c(0,1),ordered = T))
+newTrainingSet$KitchenQual <- as.numeric(factor(newTrainingSet$KitchenQual, levels = c("Ex","Gd","TA","Fa","Po"),labels = c(5,4,3,2,1), ordered = T))
+
+
+```
+We continue to deal with the categorical variables, so as to make it easier to build our model.We would have preferred to do one-hot encoding on the categorical data but we couldnt handle that correctly that was why used this approach to capture the categorical data
+
+```{r}
+newTrainingSet$MSZoning <-as.numeric(factor(newTrainingSet$MSZoning))
+newTrainingSet$Neighborhood <- as.numeric(factor(newTrainingSet$Neighborhood))
+newTrainingSet$Utilities <- as.numeric(factor(newTrainingSet$Utilities))
+newTrainingSet$BldgType <- as.numeric(factor(newTrainingSet$BldgType))
+newTrainingSet$HouseStyle <- as.numeric(factor(newTrainingSet$HouseStyle))
+```
+#Predictive Modeling
+
+We would perform the linear regression model on our the newTrainig data after we have done the date preprocessing, we build our regression model and see how well our model behaves.
+```{r}
+#naCol <- which(colSums(is.na(newTrainingSet))>0)
+#sort(colSums(sapply(newTrainingSet[naCol],is.na)), decreasing = T)
+```
+```{r}
+head(newTrainingSet)
+lmod <- lm(newTrainingSet$SalePrice ~ .,na.action = na.omit, data = newTrainingSet)
+summary(lmod)
+```
+We would like to perform stepwise regression so as to know what variables have greater contributions to the model
+```{r}
+trainModel <- step(lmod)
+summary(trainModel)
+```
+## Performing Diagnostics
+```{r}
+plot(fitted(lmod), residuals(lmod), xlab = "Fitted", ylab = "Residuals")
+abline(h=0)
+```
+```{r}
+plot(fitted(lmod), sqrt(abs(residuals(lmod))), xlab = "Fitted", ylab = expression(sqrt(hat(epsilon))))
+```
+```{r}
+par(mfrow=c(2,2))
+qqnorm(residuals(lmod),ylab = "Residuals")
+qqline(residuals(lmod))
+
+hist(residuals(lmod),xlab = "Residuals")
+```
+# Performing the Durbin-Watson Statistic
+```{r}
+require(lmtest)
+dwtest(lmod)
+```
+# We are interested as well in checking for unusual observations
+```{r}
+hatv <- hatvalues(lmod)
+head(hatv)
+```
+After performing the stepwise Regression, we found it interesting that we would only be using these variables that the stepwise regression indicated so as to build our linear regression model with,so we would name this train
+```{r}
+trainMdl <- lm(formula = newTrainingSet$SalePrice ~ LotArea + Neighborhood + 
+    BldgType + HouseStyle + OverallQual + OverallCond + YearBuilt + 
+    ExterQual + GrLivArea + FullBath + KitchenQual + GarageCars, 
+    data = newTrainingSet, na.action = na.omit)
+summary(trainMdl)
+```
+We could observe from the above that the R-squared value is preety high and it makes sense to me the predictor variables that the step function predicted to have high significance in the model, therefore, I would be using only these variables in the subsequent models.
+```{r}
+selectd_var <- c('LotArea', 'Neighborhood',  
+    'BldgType', 'HouseStyle','OverallQual', 'OverallCond','YearBuilt', 
+    'ExterQual', 'GrLivArea' ,'FullBath' ,'KitchenQual', 'GarageCars','SalePrice' )
+trainSelectVar <- newTrainingSet[,selectd_var]
+head(trainSelectVar)
+
+```
+
+```{r}
+attach(trainSelectVar)
+library(car)
+scatterplot(SalePrice ~ YearBuilt, data = trainSelectVar, xlab = "Year Built", ylab = "Sale Price", grid = TRUE)
+```
+```{r}
+test_set <- read.csv("C:/Users/HP Laptop/Desktop/stat5120project/test.csv", na.strings = "NA", header = TRUE)
+# Converting Factors to Numeric
+test_set$ExterQual <- as.numeric(factor(test_set$ExterQual, levels = c("Ex","Gd","TA","Fa","Po"),labels = c(5,4,3,2,1), ordered = T))
+test_set$HeatingQC <- as.numeric(factor(test_set$HeatingQC, levels = c("Ex","Gd","TA","Fa","Po"),labels = c(5,4,3,2,1), ordered = T))
+test_set$CentralAir <- as.numeric(factor(test_set$CentralAir, levels = c("N","Y"),labels = c(0,1),ordered = T))
+test_set$KitchenQual <- as.numeric(factor(test_set$KitchenQual, levels = c("Ex","Gd","TA","Fa","Po"),labels = c(5,4,3,2,1), ordered = T))
+
+test_set$MSZoning <-as.numeric(factor(test_set$MSZoning))
+test_set$Neighborhood <- as.numeric(factor(test_set$Neighborhood))
+test_set$Utilities <- as.numeric(factor(test_set$Utilities))
+test_set$BldgType <- as.numeric(factor(test_set$BldgType))
+test_set$HouseStyle <- as.numeric(factor(test_set$HouseStyle))
+
+
+selectd_var <- c('LotArea', 'Neighborhood',  
+    'BldgType', 'HouseStyle','OverallQual', 'OverallCond','YearBuilt', 
+    'ExterQual', 'GrLivArea' ,'FullBath' ,'KitchenQual', 'GarageCars')
+testSelectVar <- test_set[,selectd_var]
+head(testSelectVar)
+
+```
+```{r}
+pred <- predict(trainMdl,testSelectVar, type = "response")
+testPrediction <- data.frame("Id" =  test_set$Id, "SalePrice" = pred)
+testModelOutput <- cbind(testSelectVar,pred)
+head(testModelOutput)
+
+```
+I decided to scale both the training and the test set and then try to perform different model to compare which works best
+```{r}
+scaleTrain <- data.frame(scale(trainSelectVar))
+scaleTest <- data.frame(scale(testModelOutput))
+head(scaleTrain)
+```
+
+So lets build a regression model on the scaled training model
+```{r}
+scaletrainMdl <- lm(formula = scaleTrain$SalePrice ~ LotArea + Neighborhood + 
+    BldgType + HouseStyle + OverallQual + OverallCond + YearBuilt + 
+    ExterQual + GrLivArea + FullBath + KitchenQual + GarageCars, 
+    data = scaleTrain, na.action = na.omit)
+summary(scaletrainMdl)
+```
+```{r}
+plot(fitted(scaletrainMdl), residuals(scaletrainMdl), xlab = "Fitted", ylab = "Residuals")
+abline(h=0)
+```
+
+```{r}
+RSS <- c(crossprod(scaletrainMdl$residuals))
+MSE <- RSS/length(scaletrainMdl$residuals)
+RMSE <- sqrt(MSE)
+print(RMSE)
+```
+We see that the fit of this model is already very good in terms of R- squared, 
+```{r}
+summary(scaletrainMdl)$r.squared
+```
+We would like to test how well our model does in predicting the observations in the test set, to do this we would need a measure of performance- we use the root mean square error(RMSE)
+
+### Ridge Model
+  To overcome overfitting, I used the ridge model
+```{r}
+selectd_var <- c('LotArea', 'Neighborhood',  
+    'BldgType', 'HouseStyle','OverallQual', 'OverallCond','YearBuilt', 
+    'ExterQual', 'GrLivArea' ,'FullBath' ,'KitchenQual', 'GarageCars','SalePrice' )
+sctrainSelectVar <- scaleTrain[,selectd_var]
+#head(trainSelectVar)
+
+yTrainSelector <- as.matrix(sctrainSelectVar[1:1460,13])
+
+xTrainSelector <- as.matrix(sctrainSelectVar[1:1460,1:12])
+head(xTrainSelector)
+head(yTrainSelector)
+```
+```{r}
+library(glmnet)
+fit <- glmnet(xTrainSelector,yTrainSelector)
+cvfit_ridge <- cv.glmnet(xTrainSelector, yTrainSelector, alpha = 0)
+plot(cvfit_ridge)
+```
+
+```{r}
+print(cvfit_ridge$lambda.min)
+```
+```{r}
+ridge_coef <- cvfit_ridge$glmnet.fit$beta[,cvfit_ridge$glmnet.fit$lambda == cvfit_ridge$lambda.min]
+c <- as.matrix(coef(fit, s= 0.06789084))
+yHat <- predict(fit,xTrainSelector,s= 0.06789084)
+dof <- length(yTrainSelector)-length(c)
+rse <- sqrt(sum((yTrainSelector - yHat)^2)/dof)
+rse
+```
+```{r}
+plot(fit, label =T)
+```
+```{r}
+my_control <- trainControl(method ="cv", number = 5)
+lassoGrid <- expand.grid(alpha = 1, lambda = seq(0.001,0.1, by = 0.0005))
+
+lasso_mod <- train(xTrainSelector, y = trainSelectVar$SalePrice[!is.na(trainSelectVar$SalePrice)], method = "glmnet", trControl = my_control,tuneGrid = lassoGrid)
+lasso_mod$bestTune
+```
+## Conclusion
+
+We were able to build a linear regression model on the Ames, housing data which was divided into training and test set data,we were able also to use stepwise regression to pick the variables that have greater significance on our model as well as calculate different model performance measures like Lasso Regression, Ridge Regression, Root Mean Square Error as well as to see how well the model acts on the test set.
+
+
+## References.
+Our gratitude  goes to Dr. Matt Jones, who taught us Regression Analysis as well as explained all the concepts in the topic to us, which gave us all the know-how to use in this project. We all appreciate the richness of the text, Linear Models with R by Faraway which was a very great resource for this project
+-The data was gotten from Kaggle https://www.kaggle.com/c/house-prices-advanced-regression-techniques
+
+
+
+
