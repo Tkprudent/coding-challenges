@@ -75,7 +75,7 @@ ETH —> USD <br>
 	return: USD —> JPY —> KRY —> BTC —> ETH —> USD (or) <br>
 	USD —> GBY —> KRY —> BTC —> ETH —> USD
 
-It was a great experience for me having my on site interview on February 4th, 2020. I arrived at the venue 20 minutes before and had a good chat with other students who came for the interview. I feel it preety much helps to reduce stress and help get in the mood for a conversation.
+It was a great experience for me having my on site interview on February 4th, 2020. I arrived at the venue 20 minutes before the interview and had a good chat with other students who came for the interview. I feel it preety much helps to reduce stress and help get in the mood for a conversation.
 
 It's going to start with you walking the interviewer through your resume, this is a point where you need to communicate effectively and let your personality shine forth. You don't need be afraid or upset about anything. Just express yourself freely.
 
@@ -88,7 +88,7 @@ I was also asked some SQL type question, revise group by, having, where and othe
 
 The second interview started with a chat on my resume, after which I was asked some scenario based questions from my resume.
 
-I was also asked some behavioural questions and then finally asked a coding problem.
+I was also asked some behavioural questions about team work, and meeting project deadlines, very similar to my experience in Hirevue and then finally asked a coding problem, which tested me on how to use functions, loops, and exception handling.
 
 General Advice.
 
