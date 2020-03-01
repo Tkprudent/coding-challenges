@@ -12,3 +12,5 @@ I spoke with my manager and he told me as I prepare to resume my role, it would 
 * Spark
 
 So I have decided to start my learning with the following resources, the first is the EDX course on Java Programming.
+
+I decided to take the course taught by Tim Bucksha on Udemy
